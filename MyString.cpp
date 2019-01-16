@@ -22,13 +22,13 @@ int CMyString::setString(const char* pszParam) {
     return m_nLength;
 }
 
-const char* CMyString::getString() {
+const char* CMyString::getString() const{
     return m_pszData;
 }
 
 void CMyString::release() {
     if(m_pszData != NULL)
-        delete[] this->m_pszData;
+        delete[] m_pszData;
 
     m_pszData = NULL;
     m_nLength = 0;

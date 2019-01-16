@@ -13,6 +13,6 @@ class CMyString {
     
     public:
         int setString(const char* pszParam);
-        const char* getString();
+        const char* getString() const;
         void release();
 };
