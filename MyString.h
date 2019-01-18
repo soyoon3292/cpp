@@ -21,5 +21,5 @@ class CMyString {
         const char* getString() const;
         void release();
         CMyString& operator=(const CMyString &rhs);
-        operator char*() const;
+        operator const char*() const;
 };

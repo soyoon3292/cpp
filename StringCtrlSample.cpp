@@ -32,7 +32,7 @@ int main(int argc, char *argv[]) {
     cout << strData.getString() << endl; // clear
 
     ::testFunc(strData);
-    ::testFunc(CMyString("World")); // testFunc(const CMyString &strParam = CMyString("World"))
+    ::testFunc(CMyString("World"));
 
     return 0;
 }

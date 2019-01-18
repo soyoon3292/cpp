@@ -52,4 +52,4 @@ CMyString &CMyString::operator = (const CMyString &rhs) {
     return *this;
 }
 
-CMyString::operator char*() const { return m_pszData; } // static_cast<char*>CMyString -> CMyString.m_pszData
+CMyString::operator const char*() const { return m_pszData; }
