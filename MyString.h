@@ -3,6 +3,10 @@
 class CMyString {
     public:
         CMyString();
+        // 복사 생성자
+        CMyString(const CMyString &rhs);
+        // 변환 생성자
+        CMyString(const char* param);
         ~CMyString();
         
     private:
@@ -13,6 +17,9 @@ class CMyString {
     
     public:
         int setString(const char* pszParam);
+        // 멤버 읽기만 수행하므로 메서드를 상수화한다.
         const char* getString() const;
         void release();
+        CMyString& operator=(const CMyString &rhs);
+        operator char*() const;
 };
