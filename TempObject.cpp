@@ -4,7 +4,7 @@ using namespace std;
 // 제작자 코드
 class CTestData {
     public:
-        CTestData(int nParam, char *pszName) : m_nData(nParam), m_pszName(pszName) {
+        CTestData(int nParam, const char *pszName) : m_nData(nParam), m_pszName(pszName) {
             cout << "CTestData(int): " << m_pszName << endl;
         }
 
@@ -32,7 +32,7 @@ class CTestData {
         int m_nData = 0;
 
         // 변수 이름을 저장하기 위한 멤버
-        char *m_pszName = nullptr;
+        const char *m_pszName = nullptr;
 };
 
 // CTestData 객체를 반환하는 함수다.
@@ -49,9 +49,9 @@ int main(int argc, char *argv[]) {
     cout << "*****Before*****" << endl;
 
     // 함수가 반환되면서 임시 객체가 생성됐다가 대입 연산 후 즉시 소멸한다!
-    b = testFunc(10);
+    const CTestData &rData = testFunc(10);
     cout << "*****After*****" << endl;
-    cout << b.getData() << endl;
+    cout << rData.getData() << endl;
 
     return 0;
 }
