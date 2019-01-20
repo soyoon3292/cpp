@@ -7,6 +7,8 @@ class CMyString {
         CMyString(const CMyString &rhs);
         // 변환 생성자
         CMyString(const char* param);
+        // 이동 생성자
+        CMyString(CMyString &&rhs);
         ~CMyString();
         
     private:

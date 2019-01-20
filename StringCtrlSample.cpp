@@ -6,8 +6,15 @@ using namespace std;
 //     cout << param.getString() << endl;
 // }
 
-void testFunc(const CMyString &strParam) {
-    cout << strParam << endl;
+// void testFunc(const CMyString &strParam) {
+//     cout << strParam << endl;
+// }
+
+CMyString testFunc() {
+    CMyString strTest("testFunc() return");
+    cout << strTest << endl;
+
+    return strTest;
 }
 
 int main(int argc, char *argv[]) {
@@ -28,11 +35,14 @@ int main(int argc, char *argv[]) {
     // strNewData = strTest;
     // cout << strNewData.getString() << endl;
     
-    CMyString strData("Hello");
-    cout << strData.getString() << endl; // clear
+    // CMyString strData("Hello");
+    // cout << strData.getString() << endl; // clear
 
-    ::testFunc(strData);
-    ::testFunc(CMyString("World"));
+    // ::testFunc(strData);
+    // ::testFunc(CMyString("World"));
+
+    // 이름 없는 임시 객체가 만들어진다.
+    testFunc();
 
     return 0;
 }
