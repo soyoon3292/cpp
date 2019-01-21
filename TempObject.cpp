@@ -51,7 +51,6 @@ int main(int argc, char *argv[]) {
     // 함수가 반환되면서 임시 객체가 생성됐다가 대입 연산 후 즉시 소멸한다!
     const CTestData &rData = testFunc(10);
     cout << "*****After*****" << endl;
-    cout << rData.getData() << endl;
 
     return 0;
 }

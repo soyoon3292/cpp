@@ -23,5 +23,9 @@ class CMyString {
         const char* getString() const;
         void release();
         CMyString& operator=(const CMyString &rhs);
-        operator const char*() const;
+        operator const char* const();
+        int getLength() const;
+        int append(const char * pszParam);
+        CMyString operator+(const CMyString &rhs);
+        CMyString& operator+=(const CMyString &rhs);
 };

@@ -7,15 +7,17 @@ using namespace std;
 // }
 
 // void testFunc(const CMyString &strParam) {
-//     cout << strParam << endl;
+//     // cout << strParam << endl;
+//     cout << strParam.operator const char* const << endl;
+//     cout << CMyString("World").operator const char* const << endl;
 // }
 
-CMyString testFunc() {
-    CMyString strTest("testFunc() return");
-    cout << strTest << endl;
+// CMyString testFunc() {
+//     CMyString strTest("testFunc() return");
+//     cout << strTest << endl;
 
-    return strTest;
-}
+//     return strTest;
+// }
 
 int main(int argc, char *argv[]) {
     // CMyString strData;
@@ -36,13 +38,21 @@ int main(int argc, char *argv[]) {
     // cout << strNewData.getString() << endl;
     
     // CMyString strData("Hello");
-    // cout << strData.getString() << endl; // clear
-
+    // cout << strData.getString() << endl;
     // ::testFunc(strData);
     // ::testFunc(CMyString("World"));
 
-    // 이름 없는 임시 객체가 만들어진다.
-    testFunc();
+    // // 이름 없는 임시 객체가 만들어진다.
+    // testFunc();
+
+    CMyString strLeft("Hello"), strRight("World"), strResult;
+
+    strResult = strLeft + strRight;
+    cout << strResult << endl;
+
+    cout << strLeft << endl;
+    strLeft += CMyString("World");
+    cout << strLeft << endl;
 
     return 0;
 }

@@ -66,4 +66,56 @@ CMyString &CMyString::operator = (const CMyString &rhs) {
     return *this;
 }
 
-CMyString::operator const char*() const { return m_pszData; }
+CMyString::operator const char* const() { return m_pszData; }
+
+int CMyString::getLength() const {
+    return m_nLength;
+}
+
+int CMyString::append(const char * pszParam) {
+    // 매개변수 유효성 검사
+    if(pszParam == NULL)
+        return 0;
+    
+    int nLenParam = strlen(pszParam);
+
+    if(nLenParam == 0)
+        return 0;
+    
+    // 세트된 문자열이 없다면 새로 문자열을 할당한 것과 동일하게 처리함
+    if(m_pszData == NULL) {
+        setString(pszParam);
+
+        return m_nLength;
+    }
+
+    // 현재 문자열 길이 백업
+    int nLenCur = m_nLength;
+
+    // 두 문자열을 합쳐서 저장할 수 있는 메모리를 새로 할당함
+    char *pszResult = new char[nLenCur + nLenParam + 1];
+
+    // 문자열 조합
+    strncpy(pszResult, m_pszData, sizeof(char) * (nLenCur + 1));
+    strncpy(pszResult + (sizeof(char) * nLenCur), pszParam, sizeof(char) * (nLenParam + 1));
+
+    // 기존 문자열 삭제 및 멤버 정보 갱신
+    release();
+    m_pszData = pszResult;
+    m_nLength = nLenCur + nLenParam;
+
+    return m_nLength;
+}
+
+CMyString CMyString::operator+(const CMyString &rhs) {
+    CMyString strResult(m_pszData);
+    strResult.append(rhs.getString());
+
+    return strResult;
+}
+
+CMyString& CMyString::operator+=(const CMyString &rhs) {
+    append(rhs.getString());
+
+    return *this;
+}
