@@ -48,6 +48,7 @@ int main(int argc, char* argv[]) {
 
     // b + c 연산을 시랭하면 이름 없는 임시 객체가 만들어지며
     // a에 대입하는 것은 이 임시 객체다.
+    // a.operator=(b.operator+(c));
     a = b + c;
     cout << a << endl;
     cout << "******End******" << endl;

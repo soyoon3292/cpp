@@ -119,3 +119,39 @@ CMyString& CMyString::operator+=(const CMyString &rhs) {
 
     return *this;
 }
+
+char& CMyString::operator[](int nIndex) {
+    if(m_nLength <= nIndex) {
+        char* pszTemp = new char[nIndex+1];
+        strncpy(pszTemp, m_pszData, m_nLength);
+        delete m_pszData;
+        m_pszData = new char[nIndex+1];
+        strncpy(m_pszData, pszTemp, nIndex+1);
+        m_nLength = nIndex+1;
+    }
+    return m_pszData[nIndex];
+}
+
+char CMyString::operator[](int nIndex) const {
+    if(m_pszData == NULL)
+        return 0;
+    if(m_nLength < nIndex)
+        return 0;
+    return m_pszData[nIndex];
+}
+
+int CMyString::operator==(const CMyString &rhs) {
+    if(m_pszData != NULL && rhs.m_pszData != NULL)
+        if(strcmp(m_pszData, rhs.m_pszData) == 0)
+            return 1;
+    
+    return 0;
+}
+
+int CMyString::operator!=(const CMyString &rhs) {
+    if(m_pszData != NULL && rhs.m_pszData != NULL)
+        if(strcmp(m_pszData, rhs.m_pszData) == 0)
+            return 0;
+    
+    return 1;
+}

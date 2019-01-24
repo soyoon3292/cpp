@@ -1,4 +1,4 @@
-#include "MyString.h"
+#include "MyStringEx.h"
 #include <iostream>
 using namespace std;
 
@@ -17,6 +17,12 @@ using namespace std;
 //     cout << strTest << endl;
 
 //     return strTest;
+// }
+
+// void testFunc(const CMyString &strParam) {
+//     cout << strParam[0] << endl;
+//     cout << strParam[strParam.getLength() - 1] << endl;
+//     cout << strParam[20] << endl;
 // }
 
 int main(int argc, char *argv[]) {
@@ -45,14 +51,40 @@ int main(int argc, char *argv[]) {
     // // 이름 없는 임시 객체가 만들어진다.
     // testFunc();
 
-    CMyString strLeft("Hello"), strRight("World"), strResult;
+    // CMyString strLeft("Hello"), strRight("World"), strResult;
+    // strResult = strLeft + strRight;
+    // cout << strResult << endl;
+    // cout << strLeft << endl;
+    // strLeft += CMyString("World");
+    // cout << strLeft << endl;
 
-    strResult = strLeft + strRight;
-    cout << strResult << endl;
+    // CMyString strParam("HelloWorld");
+    // cout << strParam << endl;
+    // testFunc(strParam);
+    // CMyString a("Hello");
+    // testFunc(a);
+    // for(int i = 0; i < 10; ++i) {
+    //     a[i] = 65 + i;
+    //     cout << a[i] << endl;
+    // }
+    // testFunc(a);
+    // CMyString c("Hello");
+    // if(strParam == c)
+    //     cout << "Same" << endl;
+    // else
+    //     cout << "Different" << endl;
+    // c = CMyString("ABCDEFGHIJ");
+    // if(a != c)
+    //     cout << "Different" << endl;
+    // else
+    //     cout << "Same" << endl;
 
-    cout << strLeft << endl;
-    strLeft += CMyString("World");
-    cout << strLeft << endl;
+    CMyStringEx strTest;
+    strTest.setString("I am a boy.");
+    cout << strTest << endl;
+
+    int nIndex = strTest.find("am");
+    cout << "Index: " << nIndex << endl;
 
     return 0;
 }
