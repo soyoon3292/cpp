@@ -1,8 +1,14 @@
 #include "MyStringEx.h"
 #include <cstring>
+#include <iostream>
+using namespace std;
 
 CMyStringEx::CMyStringEx() {
 
+}
+
+CMyStringEx::CMyStringEx(const char* pszParam) : CMyString(pszParam) {
+    
 }
 
 CMyStringEx::~CMyStringEx() {
@@ -26,6 +32,6 @@ int CMyStringEx::setString(const char* pszParam) {
         nResult = CMyString::setString("착한 사람");
     else
         nResult = CMyString::setString(pszParam);
-        
+
     return nResult;
 }
