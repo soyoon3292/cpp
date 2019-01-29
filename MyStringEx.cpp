@@ -25,13 +25,18 @@ int CMyStringEx::find(const char* pszParam) {
     return pszResult - getString();
 }
 
-int CMyStringEx::setString(const char* pszParam) {
-    int nResult;
+// int CMyStringEx::setString(const char* pszParam) {
+//     int nResult;
 
-    if(strstr(pszParam, "멍멍이") != NULL)
-        nResult = CMyString::setString("착한 사람");
-    else
-        nResult = CMyString::setString(pszParam);
+//     if(strstr(pszParam, "멍멍이") != NULL)
+//         nResult = CMyString::setString("착한 사람");
+//     else
+//         nResult = CMyString::setString(pszParam);
 
-    return nResult;
+//     return nResult;
+// }
+
+void CMyStringEx::onSetString(char* pszData, int nLength) {
+    if(strstr(pszData, "멍멍이") != NULL)
+        strncpy(pszData, "*착한아들*", sizeof(char)* (nLength + 1));
 }

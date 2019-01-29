@@ -7,5 +7,6 @@ class CMyStringEx : public CMyString {
         CMyStringEx(const char* pszParam);
         ~CMyStringEx();
         int find(const char* pszParam);
-        int setString(const char* pszParam);
+        // int setString(const char* pszParam);
+        void onSetString(char* pszData, int nLength);
 };

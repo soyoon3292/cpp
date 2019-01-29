@@ -42,6 +42,9 @@ int CMyString::setString(const char* pszParam) {
         return 0;
     m_pszData = new char[m_nLength + 1];
     strncpy(m_pszData, pszParam, m_nLength + 1);
+
+    // 미래를 호출한다!
+    onSetString(m_pszData, m_nLength);
     
     return m_nLength;
 }
@@ -154,4 +157,8 @@ int CMyString::operator!=(const CMyString &rhs) {
             return 0;
     
     return 1;
+}
+
+void CMyString::onSetString(char *pszData, int nLength) {
+    // 아무런 코드도 추가하지 않는다.
 }
