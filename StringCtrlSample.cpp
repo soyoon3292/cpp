@@ -79,12 +79,21 @@ int main(int argc, char *argv[]) {
     // else
     //     cout << "Same" << endl;
 
+    // CMyStringEx strTest;
+    // strTest.setString("I am a boy.");
+    // cout << strTest << endl;
+    // int nIndex = strTest.find("am");
+    // cout << "Index: " << nIndex << endl;
+
     CMyStringEx strTest;
-    strTest.setString("I am a boy.");
+
+    // 문자열이 필터링되어 대체되는 경우
+    strTest.setString("멍멍이 아들");
     cout << strTest << endl;
 
-    int nIndex = strTest.find("am");
-    cout << "Index: " << nIndex << endl;
+    // 필터링되지 않는 경우
+    strTest.setString("Hello");
+    cout << strTest << endl;
 
     return 0;
 }
