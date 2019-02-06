@@ -162,3 +162,10 @@ int CMyString::operator!=(const CMyString &rhs) {
 void CMyString::onSetString(char *pszData, int nLength) {
     // 아무런 코드도 추가하지 않는다.
 }
+
+CMyString operator+(const char *pszParam, const CMyString &strParam) {
+    CMyString strResult(pszParam);
+    strResult.append(strParam.m_pszData);
+
+    return strResult;
+}

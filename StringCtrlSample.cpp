@@ -96,9 +96,18 @@ int main(int argc, char *argv[]) {
     // CMyStringEx strLeft("Hello"), strRight("World");
     // cout << strLeft + strRight << endl;
 
-    CMyStringEx strTest;
-    strTest.setString("멍멍이아들");
-    cout << strTest << endl;
+    // CMyStringEx strTest;
+    // strTest.setString("멍멍이아들");
+    // cout << strTest << endl;
+
+    // CMyString a("Hello"), b("World"), c;
+    // c = a + b;
+    // cout << c << endl;
+    CMyString b("World"), c;
+    c = "Hello" + b;
+    cout << c << endl;
+    // c = b + "Hello";
+    // cout << c << endl;
 
     return 0;
 }

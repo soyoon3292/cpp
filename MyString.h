@@ -33,4 +33,5 @@ class CMyString {
         int operator==(const CMyString &rhs);
         int operator!=(const CMyString &rhs);
         virtual void onSetString(char *pszData, int nLength);
+        friend CMyString operator+(const char *pszParam, const CMyString &strParam);
 };
