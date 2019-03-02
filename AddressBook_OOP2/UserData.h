@@ -1,5 +1,6 @@
 #pragma once
 #include "MyNode.h"
+#include "MyString.h"
 
 // CMyNode 클래스의 파생 클래스로 변경
 class CUserData : public CMyNode {
@@ -8,13 +9,13 @@ class CUserData : public CMyNode {
         CUserData(const char* pszName, const char* pszPhone);
         ~CUserData(void);
 
-        const char* getName(void) const { return szName; }
-        const char* getPhone(void) const { return szPhone; }
+        const char* getName(void) const { return strName.getString(); }
+        const char* getPhone(void) const { return strPhone.getString(); }
         static int getUserDataCounter(void) { return nUserDataCounter; }
 
     protected:
-        char szName[32];    // 이름
-        char szPhone[32];   // 전화번호
+        CMyString strName;    // 이름
+        CMyString strPhone;   // 전화번호
 
         // pNext 멤버가 사라졌다!
         static int nUserDataCounter;
@@ -23,4 +24,6 @@ class CUserData : public CMyNode {
         // 순수 가상 함수들 정의
         virtual const char* getKey(void);
         virtual void printNode(void);
+
+        CUserData(const char* pszName, const char* pszPhone);
 };

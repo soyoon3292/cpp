@@ -6,18 +6,18 @@ using namespace std;
 int CUserData::nUserDataCounter = 0;
 
 CUserData::CUserData(void) {
-    memset(szName, 0, sizeof(szName));
-    memset(szPhone, 0, sizeof(szPhone));
+    strName.setString(NULL);
+    strPhone.setString(NULL);
 
     nUserDataCounter++;
 }
 
 CUserData::CUserData(const char* pszName, const char* pszPhone) {
-    memset(szName, 0, sizeof(szName));
-    memset(szPhone, 0, sizeof(szPhone));
+    strName.setString(NULL);
+    strPhone.setString(NULL);
 
-    strncpy(szName, pszName, sizeof(szName));
-    strncpy(szPhone, pszPhone, sizeof(szPhone));
+    strName.setString(pszName);
+    strPhone.setString(pszPhone);
     
     nUserDataCounter++;
 }
@@ -27,12 +27,12 @@ CUserData::~CUserData(void) {
 }
 
 const char* CUserData::getKey(void) {
-    return szName;
+    return strName.getString();
 }
 
 void CUserData::printNode(void) {
 #ifdef _DEBUG
-    cout << "[" << this << "] " << szName << "\t" << szPhone << " [" << getNext() << "]" << endl;
+    cout << "[" << this << "] " << strName << "\t" << strPhone << " [" << getNext() << "]" << endl;
 #else
     cout << szName << "\t" << szPhone << endl;
 #endif 

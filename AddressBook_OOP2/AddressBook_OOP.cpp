@@ -3,7 +3,7 @@
 #include "UserData.h"
 
 int main(int argc, char* argv[]) {
-    CMyList DB(new CUserData);
+    CMyList DB(new CUserData("Dummy", "Head"));
 
     CUserInterface UI(DB);
     UI._run();

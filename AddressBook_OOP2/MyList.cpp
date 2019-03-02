@@ -4,7 +4,11 @@
 #include <iostream>
 using namespace std;
 
-#define DATA_FILE_NAME "Address.dat"
+#ifdef _WIN32
+    #define DATA_FILE_NAME "Address_Win.dat"
+#else
+    #define DATA_FILE_NAME "Address_Mac.dat"
+#endif
 
 CMyList::CMyList(CMyNode *pHead) {
     m_pHead = pHead;
@@ -24,24 +28,14 @@ int CMyList::addNewNode(CMyNode *pNewNode) {
         return 0;
     }
 
-    pNewNode->pNext = m_pHead->pNext;
-    m_pHead->pNext = pNewNode;
-    
-    return 1;
-}
-
-void CMyList::printAll(void) {
-    CMyNode *pTmp = m_pHead->pNext;
-
-    while(pTmp != NULL) {
-        pTmp->printNode();
-        pTmp = pTmp->pNext;
+    if(onAddNewNode(pNewNode)) {
+        pNewNode->pNext = m_pHead->pNext;
+        m_pHead->pNext = pNewNode;
+        
+        return 1;
     }
 
-    cout << "CUserData Counter : " << CUserData::getUserDataCounter() << endl;
-
-    cin.get();
-    cin.get();
+    return -1;
 }
 
 CMyNode* CMyList::findNode(const char* pszKey) {
@@ -135,5 +129,17 @@ int CMyList::saveList(const char* pszFileName) {
 
     fclose(fp);
 
+    return 1;
+}
+
+CMyIterator CMyList::makeIterator(void) {
+    CMyIterator it;
+    it.m_pCurrent = m_pHead->pNext;
+    it.m_pHead = m_pHead->pNext;
+
+    return it;
+}
+
+int CMyList::onAddNewNode(CMyNode* pNewNode) {
     return 1;
 }

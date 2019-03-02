@@ -13,7 +13,7 @@ class CMyNode {
         virtual const char* getKey(void) = 0;
         virtual void printNode(void) = 0;
 
-    private:
+    protected:
         // 연결 리스트 자체를 위한 멤버
         CMyNode *pNext;
 };

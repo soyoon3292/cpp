@@ -19,4 +19,6 @@ class CUserInterface {
         int printUI(void);
 
         int _run(void);
+
+        void printAll(void);
 };

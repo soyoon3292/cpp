@@ -1,6 +1,7 @@
 #include "UserInterface.h"
 #include "MyList.h"
 #include "UserData.h"
+#include "MyIterator.h"
 #include <iostream>
 using namespace std;
 
@@ -20,7 +21,21 @@ void CUserInterface::_add(void) {
     cin >> szName;
     cout << "Input phone number : " << endl;
     cin >> szPhone;
-    m_List.addNewNode(new CUserData(szName, szPhone));
+    int nResult = m_List.addNewNode(new CUserData(szName, szPhone));
+
+    if(nResult == 0) {
+        cout << "ERROR: 이미 존재하는 데이터입니다." << endl;
+
+        cin.get();
+        cin.get();
+    }
+
+    else if(nResult == -1) {
+        cout << "ERROR: 욕설을 이름으로 쓸 수 없습니다." << endl;
+
+        cin.get();
+        cin.get();
+    }
 }
 
 int CUserInterface::printUI(void) {
@@ -42,7 +57,7 @@ void CUserInterface::_search(void) {
     cout << "Input name : " << endl;
     cin >> szName;
 
-    pNode = m_List.findNode(szName);
+    pNode = static_cast<CUserData*>(m_List.findNode(szName));
     if(pNode != NULL) {
         pNode->printNode();
     }
@@ -89,4 +104,19 @@ int CUserInterface::_run(void) {
     }
 
     return nMenu;
+}
+
+void CUserInterface::printAll(void) {
+    // 리스트에 대한 열거자를 생성한다.
+    CMyIterator it = m_List.makeIterator();
+    CUserData *pNode = NULL;
+
+    // 열거자를 이용해 리스트 전체에 접근한다.
+    while((pNode = static_cast<CUserData*> (it.getCurrent()) != NULL) {
+        pNode->printNode();
+        it.moveNext();
+    }
+
+    cin.get();
+    cin.get();
 }
